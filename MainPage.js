@@ -56,16 +56,28 @@ function move_up_text(box){
     })
 }
 
+function size_up_timeline_box(box){
+    anime({
+        targets: box,
+        width: 9,
+        easing: 'easeInOutSine'
+    })
+}
+
+function size_down_timeline_box(box){
+    anime({
+        targets: box,
+        width: 3,
+        easing: 'easeInOutSine'
+    })
+}
+
 function size_up_first(){
     dateChosen = 1
     mainText.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     size_up_time(time1)
     move_down_text(textSquare)
-    anime({
-        targets: date1Time,
-        width: 9,
-        easing: 'easeInOutSine'
-    })
+    size_up_timeline_box(date1Time)
     var delayTimeout = null
     let offsetLeft = 0
     let timeToOffsetX = 0
@@ -113,11 +125,7 @@ function size_up_first(){
 function size_down_first(){
     size_down_time(time1)
     move_up_text(textSquare)
-    anime({
-        targets: date1Time,
-        width: 3,
-        easing: 'easeInOutSine'
-    })
+    size_down_timeline_box(date1Time)
     var delayTimeout = null
     let offsetLeft = 0
     let timeToOffsetX = 0
@@ -171,15 +179,12 @@ function size_up_second(){
     mainText.innerHTML = "2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     size_up_time(time2)
     move_down_text(textSquare)
-    anime({
-        targets: date2Time,
-        width: 9,
-        easing: 'easeInOutSine'
-    })
+    size_up_timeline_box(date2Time)
     anime({
         targets: date2Svg,
         height: 240,
-        translateY: 50,
+        width: 120,
+        translateY: 40,
         easing: 'easeInOutSine'
     })
     var delayTimeout = null
@@ -200,17 +205,17 @@ function size_up_second(){
             counterCor += 1
             offsetLeft = offset.left
             coordX = offset.left-svgOffset.left+offsetX
-            coordY = offset.top+offset.height-svgOffset.top-2
-            console.log(date2Svg.getBoundingClientRect())
+            coordY = offset.top+offset.height-svgOffset.top+92
+            console.log(coordX, coordY)
             // date2Svg.style.height = coordY+"px"
             // date2Svg.style.width = coordX+offsetX+"px"
-            date2Line.setAttribute("points", "-2,92 " + coordX + "," + coordY)
+            date2Line.setAttribute("points", "4,92 " + coordX + "," + coordY)
         }
         else{
             globaloffsetX = offsetX
             clearInterval(delayTimeout)
         }
-    }, 3);
+    }, 10);
     anime({
         targets: date2,
         scale: 2,
@@ -222,7 +227,60 @@ function size_up_second(){
     })
     anime({
         targets: date2Line,
-        strokeWidth: '7',
+        strokeWidth: '9',
+        easing: 'easeInOutSine'
+    })
+}
+
+function size_down_second(){
+    size_down_time(time2)
+    move_up_text(textSquare)
+    size_down_timeline_box(date2Time)
+    anime({
+        targets: date2Svg,
+        height: "5.42em",
+        width: 50,
+        translateY: 0,
+        easing: 'easeInOutSine'
+    })
+    var delayTimeout = null
+    let offsetLeft = 0
+    let timeToOffsetX = 0
+    var offsetX = globaloffsetX
+    var coordX = 0
+    var coordY = 0
+    var counterCor = 0
+    clearTimeout(delayTimeout)
+    delayTimeout = setInterval(function() {
+        var offset = date1.getBoundingClientRect()
+        var svgOffset = date1Line.getBoundingClientRect()
+        if (timeToOffsetX%10 == 0 || timeToOffsetX%45 == 0){ offsetX -= 1}
+        if (offsetLeft != offset.left) {counterCor = 0}
+        if (!(offsetLeft == offset.left && counterCor == 5)){
+            timeToOffsetX += 1
+            counterCor += 1
+            offsetLeft = offset.left
+            coordX = offset.left-svgOffset.left+offsetX
+            coordY = offset.top+offset.height-svgOffset.top-3
+            date2Line.setAttribute("points", "-2,92 " + coordX + "," + coordY)
+        }
+        else{
+            date2Line.setAttribute("points", "-2,92 51,-2")
+            clearInterval(delayTimeout)
+        }
+    }, 3);
+    anime({
+        targets: date2,
+        scale: 1,
+        borderBottomWidth: 3,
+        translateY: 0,
+        translateX: 0,
+        lineHeight: 30, 
+        easing: 'easeInOutSine'
+    })
+    anime({
+        targets: date2Line,
+        strokeWidth: '3',
         easing: 'easeInOutSine'
     })
 }
@@ -237,6 +295,7 @@ time2.onclick = function(){
 }
 date3.onclick = function(){
     if(dateChosen == 1){size_down_first()}
+    if(dateChosen == 2){size_down_second()}
     mainText.innerHTML = "Text3"
 }
 date4.onclick = function(){
