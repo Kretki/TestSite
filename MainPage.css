@@ -1,0 +1,192 @@
+:root{
+   --bacground-color:#120c1c;
+   --background-hover-color:#211632;
+   --prime-color:#221735;
+   --dark-prime-color:#1b112c;
+   --dark-hover-prime-color:#2E1F49;
+   --secondary-color:#7f5fb9;
+   --bright-color:#bdaddb;
+   --text-color:#fcfbfd;
+}
+body {
+   margin: 0;
+   padding: 0 20px;
+   color: var(--text-color);
+   background: var(--bacground-color);
+}
+#timeline {
+   list-style: none;
+   width: 100%;
+   height: 200px;
+   margin: 200px 0 0;
+   border-top: 50px solid var(--prime-color);
+   display: table;
+   border-spacing: 30px 0;
+}
+#timeline li{
+     display: table-cell;
+     position: relative;
+     min-width: 100px;
+}
+.crossline {
+   margin: 0 auto;
+   top: -50px;
+   left: 0;
+   right: 0;
+   width: 3px;
+   height: 50px;
+   background: var(--secondary-color);
+   display: block;
+   position: absolute;
+}
+.svg-avatar-line{
+   top: 50px;
+   height: 5.42em;
+   width: 50px;
+   margin: 0 auto;
+   position: absolute;
+   display: inline;
+
+}
+.avatar-line{
+   fill: none;
+   stroke: var(--secondary-color);
+   stroke-width: 3;
+   display: inline;
+   margin: 0 auto;
+   position: relative;
+}
+.avatar {
+   width: fit-content;
+   height: 30px;
+   border-bottom: 3px solid var(--secondary-color);
+   position: absolute;
+   margin: 0 auto;
+   white-space: nowrap;
+   line-height: 30px;
+   background: var(--bacground-color);
+   text-align: left;
+   padding-left: 10px;
+   user-select: none;
+}
+li.down {
+   .avatar {
+    margin-top: 103.9px;
+    margin-left: 49.9px;
+    z-index: 0;
+   }
+}
+li.up {
+   .svg-avatar-line{
+      top: -5.42em;
+   }
+   .avatar-line{
+
+   }
+   .avatar {
+    margin-top: -116.6px;
+    margin-left: 50.2px;
+    z-index: 0;
+   }
+}
+.next-slide {
+   border-radius: 3px 0 0 3px;
+   height: 50px;
+   width: 20px;
+   top: -50px;
+   right: -100px;
+   position: relative;
+   background: var(--dark-prime-color);
+   line-height: 30px;
+}
+.next-slide:hover{
+   background-color: var(--dark-hover-prime-color);
+}
+.next-slide:hover .triangle-next{
+   border-color: transparent transparent transparent var(--background-hover-color);
+}
+.triangle-next{
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+    position: relative;
+    top: 13px;
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--bacground-color);
+}
+.main-outer-line{
+   height: 30px;
+   border: var(--prime-color) solid 3px;
+   border-radius: 20px 20px 0 0;
+   border-bottom: var(--bacground-color);
+   position: relative;
+}
+.hat{
+   height: 30px;
+   width: 40px;
+   background: var(--bacground-color);
+   margin: auto;
+   top: -25px;
+   position: relative;
+}
+.hat-up-circle{
+   height: 10px;
+   width: 20px;
+   margin-left: 8px;
+   border: 3px solid var(--prime-color);
+   border-top-left-radius: 13px;
+   border-top-right-radius: 13px;
+   border-bottom: 0;
+}
+.hat-down-corner{
+   height: 20px;
+   width: 50px;
+   margin-top: -2px;
+}
+.hat-down-corner > *{
+   display: inline;
+}
+.hat-l-quarter-circle{
+   height: 10px;
+   width: 10px;
+   border: 3px solid var(--prime-color);
+   border-bottom-right-radius: 13px;
+   border-left: 0;
+   border-top: 0;
+   display: inline-block;
+   margin-left: -2px;
+}
+.hat-r-quarter-circle{
+   height: 10px;
+   width: 10px;
+   border: 3px solid var(--prime-color);
+   border-bottom-left-radius: 13px;
+   border-right: 0;
+   border-top: 0;
+   display: inline-block;
+   margin-left: 16px;
+}
+.hat-center-circle{
+   display: inline-block;
+   height: 15px;
+   width: 15px;
+   background: var(--bright-color);
+   border-radius: 7.5px 7.5px 7.5px 7.5px;
+   position: absolute;
+   margin-top: -25px;
+   margin-left: 13.5px;
+}
+.main-text{
+   margin-top: -27px;
+   margin-left: 3px;
+   margin-right: 3px;
+   border: var(--prime-color) solid 3px;
+   border-radius: 15px 15px 0 0;
+   border-bottom: var(--bacground-color);
+   position: relative;
+   font-size: 24px;
+   padding-top: 10px;
+   padding-left: 20px;
+   padding-right: 20px;
+}

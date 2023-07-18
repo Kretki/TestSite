@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Timeline2</title>
+        <link rel="stylesheet" href="MainPage.css">
+    </head>
+    <body>
+        <ul id='timeline'>
+            <li class='event down'>
+                <div class="dot">
+                    <span class='crossline' id="date1-time">
+                        <svg class="svg-avatar-line">
+                            <polyline points="0,-2 51,89" class="avatar-line" />
+                        </svg>
+                        <div class="avatar" id="date1">first text</div>
+                    </span>
+                </div>
+            </li>
+            <li class='event up'>
+                <div class="dot">
+                    <span class='crossline'>
+                        <svg class="svg-avatar-line">
+                            <polyline points="-2,92 51,-2" class="avatar-line" />
+                        </svg>
+                        <div class="avatar" id="date2">second text</div>
+                    </span>
+                </div>
+            </li>
+            <li class='event down'>
+                <div class="dot">
+                    <span class='crossline'>
+                        <svg class="svg-avatar-line">
+                            <polyline points="0,-2 51,89" class="avatar-line" />
+                        </svg>
+                        <div class="avatar" id="date3">third text</div>
+                    </span>
+                </div>
+            </li>
+            <li class='event up'>
+                <div class="dot">
+                    <span class='crossline'>
+                        <svg class="svg-avatar-line">
+                            <polyline points="-2,92 51,-2" class="avatar-line" />
+                        </svg>
+                        <div class="avatar" id="date4">forth text</div>
+                    </span>
+                </div>
+            </li>
+            <li class="last">
+                <a href="/Page2.html">
+                    <div class="next-slide">
+                        <div class="triangle-next"></div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <div class="main-outer-line">
+            <div class="hat">
+                <div class="hat-up-circle"></div>
+                <div class="hat-down-corner">
+                    <div class="hat-l-quarter-circle"></div>
+                    <div class="hat-r-quarter-circle"></div>
+                </div>
+                <div class="hat-center-circle"></div>
+            </div>
+            <div class="main-text" id="main-text"></div>
+        </div>
+        <script src="../libs/anime-master/lib/anime.min.js"></script>
+        <script type="text/javascript" src="MainPage.js"></script>
+    </body>
+</html>
