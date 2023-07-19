@@ -194,19 +194,21 @@ function size_up_second(){
     var coordY = 0
     var offsetX = 0
     var counterCor = 0
+    var tick = 0
     clearTimeout(delayTimeout)
     delayTimeout = setInterval(function() {
         var offset = date2.getBoundingClientRect()
         var svgOffset = date2Line.getBoundingClientRect()
         timeToOffsetX += 1
-        if (timeToOffsetX%9 == 0){ offsetX += 1}
+        tick += 10
+        if (timeToOffsetX%2 == 0){ offsetX += 1}
         if (offsetLeft != offset.left) {counterCor = 0}
         if (!(offsetLeft == offset.left && counterCor == 5)){
             counterCor += 1
             offsetLeft = offset.left
             coordX = offset.left-svgOffset.left+offsetX
-            coordY = offset.top+offset.height-svgOffset.top+92
-            console.log(coordX, coordY)
+            coordY = offset.top+offset.height+92/1000*tick
+            console.log(coordX, coordY, offset.top, offset.height, svgOffset.top)
             // date2Svg.style.height = coordY+"px"
             // date2Svg.style.width = coordX+offsetX+"px"
             date2Line.setAttribute("points", "4,92 " + coordX + "," + coordY)
@@ -262,6 +264,7 @@ function size_down_second(){
             offsetLeft = offset.left
             coordX = offset.left-svgOffset.left+offsetX
             coordY = offset.top+offset.height-svgOffset.top-3
+            console.log(coordX, coordY)
             date2Line.setAttribute("points", "-2,92 " + coordX + "," + coordY)
         }
         else{
